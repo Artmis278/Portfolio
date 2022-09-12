@@ -120,13 +120,6 @@ Select *, (TotalVaccination/population)*100 as Ratio
 from PopvsVacc
 
 
-
-
-
-
-
-
-
 Select location, date, SUM(cast(total_vaccinations as int)) as sumOf
 from [Portfolio Project]..CovidVaccinations
 Where continent is not null
@@ -142,3 +135,15 @@ Create View XYZ as
 	on dea.location=vac.location
 	and dea.date=vac.date
 Where dea.continent is not Null
+
+Select *
+from PercentPoVacc
+
+-- Trying to see why did I get an error while creating the view
+SELECT *
+FROM sys.objects
+WHERE name = 'PopvsVacc'
+
+SELECT OBJECT_NAME(parent_object_id) ParentObject, *
+FROM sys.objects
+WHERE name = 'PopvsVacc'
